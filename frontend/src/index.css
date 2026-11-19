@@ -1,0 +1,220 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 199 89% 48%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 142 76% 36%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 199 89% 48%;
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 199 89% 48%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 142 76% 36%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 199 89% 48%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-5 py-2.5 text-sm font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50;
+  }
+  .btn-primary {
+    @apply btn bg-primary text-primary-foreground hover:bg-primary/90 active:bg-primary shadow-sm hover:shadow-md;
+  }
+  .btn-secondary {
+    @apply btn bg-secondary text-secondary-foreground hover:bg-secondary/80;
+  }
+  .btn-ghost {
+    @apply btn hover:bg-accent hover:text-accent-foreground;
+  }
+  .btn-outline {
+    @apply btn border border-input bg-background hover:bg-accent hover:text-accent-foreground;
+  }
+  .btn-destructive {
+    @apply btn bg-destructive text-destructive-foreground hover:bg-destructive/90;
+  }
+  .btn-sm {
+    @apply h-9 px-3 text-xs;
+  }
+  .btn-lg {
+    @apply h-11 px-6 text-base;
+  }
+  .btn-icon {
+    @apply h-10 w-10 p-0;
+  }
+
+  .card {
+    @apply rounded-2xl border bg-card text-card-foreground shadow-sm transition-shadow duration-200 hover:shadow-md;
+  }
+  .card-hover {
+    @apply card hover:shadow-lg hover:-translate-y-1;
+  }
+
+  .input {
+    @apply flex h-10 w-full rounded-xl border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  .label {
+    @apply text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70;
+  }
+
+  .badge {
+    @apply inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2;
+  }
+  .badge-primary {
+    @apply badge border-transparent bg-primary text-primary-foreground hover:bg-primary/80;
+  }
+  .badge-secondary {
+    @apply badge border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80;
+  }
+  .badge-outline {
+    @apply badge text-foreground;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  .glass {
+    @apply bg-white/10 dark:bg-black/10 backdrop-blur-xl border border-white/20 dark:border-black/20;
+  }
+  .glass-strong {
+    @apply bg-white/20 dark:bg-black/20 backdrop-blur-2xl border border-white/30 dark:border-black/30;
+  }
+
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-accent to-purple-500;
+  }
+
+  .container-main {
+    @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .animate-in {
+    animation: animateIn 0.3s ease-out forwards;
+  }
+  @keyframes animateIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+/* Emulator canvas styles */
+.emulator-canvas {
+  @apply w-full h-full block;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+/* Music player styles */
+.music-player-bar {
+  @apply fixed bottom-0 left-0 right-0 z-50 glass-strong border-t border-white/10 dark:border-black/10;
+}
+
+/* Game grid */
+.game-grid {
+  @apply grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5;
+}
+
+/* Focus styles for accessibility */
+.focus-ring {
+  @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background;
+}
+
+/* Loading skeleton */
+.skeleton {
+  @apply animate-pulse bg-muted rounded;
+}
+
+/* Toast styles */
+.toast-enter {
+  animation: slideInRight 0.3s ease-out;
+}
+.toast-exit {
+  animation: slideOutRight 0.3s ease-in;
+}
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes slideOutRight {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+}
